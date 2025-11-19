@@ -27,14 +27,14 @@ jobs:
         os: ["ubuntu-20.04", "windows-latest"]
         python_version: ["3.9", "3.10", "3.11", "3.12"]
     steps:
-        - uses: actions/checkout@v4
+        - uses: actions/checkout@v5
         - name: Setup python
-          uses: actions/setup-python@v5
+          uses: actions/setup-python@v6
           with:
             python-version: ${{ matrix.python_version }}
             architecture: x64
         - name: Setup node
-          uses: actions/setup-node@v4
+          uses: actions/setup-node@v6
           with:
             node-version: 18
         - name: Build frontend
@@ -67,7 +67,7 @@ jobs:
             python3 -m pytest tests/e2e.py --tracing=retain-on-failure
         - name: Upload test artifacts
           if: ${{ failure() && steps.e2e.conclusion == 'failure' }}
-          uses: actions/upload-artifact@v4
+          uses: actions/upload-artifact@v5
           with:
             name: playwright-traces${{ matrix.python_version }}
             path: test-results
