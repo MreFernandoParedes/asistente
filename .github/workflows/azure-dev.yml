@@ -98,13 +98,13 @@ jobs:
       USE_CHAT_HISTORY_BROWSER: ${{ vars.USE_CHAT_HISTORY_BROWSER }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install azd
-        uses: Azure/setup-azd@v1.0.0
+        uses: Azure/setup-azd@v2.2.0
 
       - name: Install Nodejs
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 18
 
